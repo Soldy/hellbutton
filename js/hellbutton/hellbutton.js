@@ -9,6 +9,11 @@ function hellButtonClass(width_, height_){
         return _svg;
     };
     const _create = (tag)=>document.createElementNS('http://www.w3.org/2000/svg', tag);
+    const _attr = (el,list) =>{
+        for(let i in list)
+            el.setAttribute(i, list[i]);
+
+    };
     const _svg = _create('svg');
     let _right_line; 
     let _left_line; 
@@ -26,7 +31,6 @@ function hellButtonClass(width_, height_){
     };
     const _renderLine = function(points){
          let out = '';
-         console.log(points);
          for (let point of points)
              out += (
                ' '+
@@ -35,10 +39,11 @@ function hellButtonClass(width_, height_){
          return out ;
     };
     const _renderBorderStyle = function(el){
-        el.setAttribute('fill', 'none');
-        el.setAttribute('stroke', '#ccc');
-        el.setAttribute('stroke-width', '1');
-
+        _attr(el,{
+            'fill': 'none',
+            'stroke': '#aaa',
+            'stroke-width': '1'
+        });
     };
     const _renderBorderLine = function(direct){
         return _renderLine([
@@ -75,11 +80,13 @@ function hellButtonClass(width_, height_){
     };
     const _renderInner = function(){
         _inner = _create('rect');
-       _inner.setAttribute('fill', '#ffff00');
-       _inner.setAttribute('x', _widthCalc(200));
-       _inner.setAttribute('y', _heightCalc(200));
-       _inner.setAttribute('width', _widthCalc(1600));
-       _inner.setAttribute('height', _heightCalc(600));
+        attr(_inner,{
+          'fill': '#ffff00',
+          'x': _widthCalc(200),
+          'y': _heightCalc(200),
+          'width': _widthCalc(1600),
+          'height': _heightCalc(600))
+       });
     };
     _svg.setAttribute('height', height_);
     _svg.setAttribute('width', width_);
