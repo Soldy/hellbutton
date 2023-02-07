@@ -6,7 +6,8 @@ function hellButtonClass(width_, height_){
         _svg.appendChild(_left_line);
         _svg.appendChild(_right_line);
         _svg.appendChild(_inner);
-        return _svg;
+        _shell.appendChild(_svg);
+        return _shell;
     };
     const _create = (tag)=>document.createElementNS('http://www.w3.org/2000/svg', tag);
     const _attr = (el,list) =>{
@@ -20,6 +21,7 @@ function hellButtonClass(width_, height_){
     let _inner; 
     let _width = width_;
     let _height = height_;
+    let _shell = document.createElement('nav');
     const _widthCalc = function(inp){return (_width/2000)*inp;};
     const _heightCalc = function(inp){return (_height/1000)*inp;};
     const _renderPoint = function(xy){
@@ -80,15 +82,15 @@ function hellButtonClass(width_, height_){
     };
     const _renderInner = function(){
         _inner = _create('rect');
-        attr(_inner,{
+        _attr(_inner,{
           'fill': '#ffff00',
           'x': _widthCalc(200),
           'y': _heightCalc(200),
           'width': _widthCalc(1600),
-          'height': _heightCalc(600))
+          'height': _heightCalc(600)
        });
     };
-    _svg.setAttribute('height', height_);
-    _svg.setAttribute('width', width_);
-    console.log(width_);
+    _attr(_svg, {height: height_,width: width_});
+    _attr(_shell, {class:'hell_button_shell'});
+
 }

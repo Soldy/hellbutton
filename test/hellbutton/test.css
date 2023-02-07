@@ -14,8 +14,14 @@ body{
     height:90%;
 }
 svg{
-    width: 200px;
-    height: 100px;
     position: absolute;
     display: block;
+}
+svg,
+.hell_button_shell{
+    width: 200px;
+    height: 100px;
+}
+.hell_button_shell{
+    position:relative;
 }
