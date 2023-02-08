@@ -24,4 +24,5 @@ svg,
 }
 .hell_button_shell{
     position:relative;
+    cursor:pointer;
 }

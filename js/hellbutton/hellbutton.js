@@ -3,8 +3,8 @@ function hellButtonClass(width_, height_, options_){
     this.render = function(){
         _renderBorderLeft(); 
         _renderBorderRight(); 
-           _renderInner(); 
-           _svg.appendChild(_inner);
+        _renderInner(); 
+        _svg.appendChild(_inner);
         _renderText();
         _renderImage();
         _svg.appendChild(_left_line);
@@ -12,6 +12,11 @@ function hellButtonClass(width_, height_, options_){
         _svg.appendChild(_image);
         _svg.appendChild(_text);
         _shell.appendChild(_svg);
+        _shell.addEventListener(
+            'click',
+            _click,
+            false
+        );
         return _shell;
     };
     const _create = (tag)=>document.createElementNS('http://www.w3.org/2000/svg', tag);
@@ -25,6 +30,7 @@ function hellButtonClass(width_, height_, options_){
     let _text_text = options_.text || '';
     let _image_url = options_.image_url || '';
     let _inner_color = options_.inner_color || '#0000';
+    let _click = options_.click || function(){};
     let _right_line; 
     let _left_line; 
     let _inner; 

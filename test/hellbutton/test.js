@@ -1,6 +1,7 @@
 window.onload=function(){
     const hellButton1 = new hellButtonClass(200,100, {
-      text:'TEST'
+      text:'TEST',
+      click:()=>{alert('TEST');}
     });
     const hellButton2 = new hellButtonClass(200,100, {
       text:'TEST',
