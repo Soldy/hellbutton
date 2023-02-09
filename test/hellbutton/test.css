@@ -23,6 +23,7 @@ svg,
     height: 100px;
 }
 .hell_button_shell{
+    margin-top:10px;
     position:relative;
     cursor:pointer;
 }

@@ -42,10 +42,18 @@ function hellButtonClass(width_, height_, options_){
     const _widthCalc = function(inp){return (_width/2000)*inp;};
     const _heightCalc = function(inp){return (_height/1000)*inp;};
     const _renderPoint = function(xy){
+        if(xy.length === 2)
+            return (
+              _widthCalc(xy[0]).toString()+
+              ' '+
+              _heightCalc(xy[1]).toString()
+            );
         return (
-          _widthCalc(xy[0]).toString()+
+          xy[0]+
           ' '+
-          _heightCalc(xy[1]).toString()
+          _widthCalc(xy[1]).toString()+
+          ','+
+          _heightCalc(xy[2]).toString()
         );
     };
     const _renderLine = function(points){
@@ -61,14 +69,14 @@ function hellButtonClass(width_, height_, options_){
         _attr(el,{
             'fill': 'none',
             'stroke': '#aaa',
-            'stroke-width': '1'
+            'stroke-width': _widthCalc(20),
         });
     };
     const _renderBorderLine = function(direct){
         return _renderLine([
-          [direct*200,200],
-          [0,600],
-          [direct*-200,200]
+          ['l',direct*200,200],
+          ['l',0,600],
+          ['l',direct*-200,200]
         ]);
     };
     const _renderBorder = function(points, direction){
@@ -78,7 +86,7 @@ function hellButtonClass(width_, height_, options_){
         out.setAttribute(
           'd',
           (
-            ' M '+start+' l '+line
+            ' M '+start+' '+line
           )
         );
         _renderBorderStyle(out);
@@ -87,13 +95,13 @@ function hellButtonClass(width_, height_, options_){
     };
     const _renderBorderRight = function(){
         _right_line = _renderBorder(
-           [2000-200,0],
+           [2000-220,0],
            1
         );
     };
     const _renderBorderLeft = function(){
         _left_line = _renderBorder(
-           [200,0],
+           [220,0],
            -1
         );
     };
